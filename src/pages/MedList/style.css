@@ -1,0 +1,11 @@
+ul {
+    list-style-type: none;
+    padding: 0px;
+}
+.newMed, .newDoc, .newFreq {
+    width: 160px;
+}
+.medNotes {
+    height: 200px;
+    width: 160px;
+}

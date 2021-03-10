@@ -1,13 +1,13 @@
 import React from "react";
 import "./style.css";
 
-export function Input(props) {
+export const Input = props => {
     return (
         <input type="text" { ...props } />
     );
 };
 
-export function Text(props) {
+export const Text = props => {
     return (
         <div>
             <textarea className="text-area" rows="40" { ...props } />
@@ -15,22 +15,38 @@ export function Text(props) {
     );
 };
 
-export function Add(props) {
+export const Note = ({ children }) => {
+    return (
+        <p className="med-note">{ children }</p>
+    );
+};
+
+export const Add = props => {
     return (
         <button { ...props } className="add">Add</button>
     );
 };
 
-export function Edit(props) {
+export const Edit = props => {
     return (
         <button { ...props } className="edit">Edit</button>
     );
 };
 
-export function Delete(props) {
+export const Delete = props => {
     return (
         <button { ...props } className="delete">Delete</button>
     );
 };
 
-export default { Input, Add, Edit, Delete };
+export const SignIn = props => {
+    return (
+        <button { ...props } className="signIn">Sign In</button>
+    );
+};
+
+export const Join = props => {
+    return (
+        <button { ...props } className="signUp">Sign Up</button>
+    );
+};
