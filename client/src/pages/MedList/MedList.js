@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Input, Text, Note, Add, Edit, Delete } from "../../components/Inputs/Inputs";
+import API from "../../utils/API";
 import "./style.css";
 
 class MedList extends Component {
@@ -13,12 +14,31 @@ class MedList extends Component {
         records: []
     };
 
+    componentDidMount() {
+        this.loadMeds();
+    };
+
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
             [ name ]: value
         });
     };
+
+    saveMedNote = event => {
+        event.preventDefault();
+
+        API.saveRec({
+            medication: this.state.medication,
+            prescribed_by: this.state.prescribed_by,
+            frequency: this.state.frequency,
+            notes: this.state.notes
+        })
+    }
+
+    loadMeds = () => {
+        
+    }
 
     render() {
         return(
