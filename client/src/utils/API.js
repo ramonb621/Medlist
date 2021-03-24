@@ -13,7 +13,7 @@ export default {
         return axios.delete("/api/meds/" + id);
     },
 
-    saveRec: function(medData) {
+    saveMedRec: function(medData) {
         return axios.post("/api/meds", medData);
     }
 };

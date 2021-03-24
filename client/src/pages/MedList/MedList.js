@@ -25,19 +25,31 @@ class MedList extends Component {
         });
     };
 
-    saveMedNote = event => {
+    saveRec = event => {
         event.preventDefault();
 
-        API.saveRec({
+        API.saveMedRec({
             medication: this.state.medication,
             prescribed_by: this.state.prescribed_by,
             frequency: this.state.frequency,
             notes: this.state.notes
         })
-    }
+        .then(res => this.loadMeds())
+        .catch(err => console.log(err));
+    };
 
     loadMeds = () => {
-        
+        API.getRecs()
+        .then(res => {
+            this.setState({
+                records: res.data,
+                medication: "",
+                prescribed_by: "",
+                frequency: "",
+                notes: ""
+            });
+        })
+        .catch(err => console.log(err));
     }
 
     render() {
@@ -59,7 +71,7 @@ class MedList extends Component {
                             <Text className="medNotes" value={ this.state.notes } onChange={ this.handleInputChange } name="notes" placeholder="Enter medication notes..." />
                         </li>
                     </ul>
-                    <Add />
+                    <Add onClick={ this.saveRec } />
                 </form>
                 <form>
                     <p className="rec-title">Saved Meds: </p>
